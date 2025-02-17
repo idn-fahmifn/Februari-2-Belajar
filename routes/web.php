@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\EmployeeController;
+use App\Http\Middleware\UmurMiddleware;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -63,7 +65,7 @@ Route::prefix('umur')->group(function(){
     // halaman main
     Route::get('sukses', function(){
         return view('umur.main');
-    })->name('sukses');
+    })->middleware(UmurMiddleware::class)->name('sukses');
 
     // route mengolah data umur
     Route::post('umur', function(Request $req){
@@ -73,9 +75,15 @@ Route::prefix('umur')->group(function(){
             'umur' => ['integer', 'min:1', 'max:100', 'required']
         ]);
 
-        return redirect()->route('sukses')
-        ->with('success', 'Kamu berhasil Masuk.');
+        //membuat key umur agar data umur bisa diakses di middleware 
+        $req->session()->put('umur', $req->umur);
+
+        // mengarahkan ke route selanjutnya (sukses).
+        return redirect()->route('sukses')->with('success', 'Kamu berhasil Masuk.');
+
     })->name('umur.store');
 });
+
+Route::get('employee', [EmployeeController::class, 'index']);
 
 

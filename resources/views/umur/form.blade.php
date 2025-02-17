@@ -10,13 +10,19 @@
     <p>Masukan umur kamu dibawah : </p>
 
     <!-- output ketika error -->
+
     @if ($errors->any())
-    <ul style="color: red;">
-        @foreach ($errors->all() as $error)
-        <li>{{ $error }}</li>
+    <ul>
+        @foreach ($errors->all() as $gagal)
+        <li>{{ $gagal }}</li>
         @endforeach
     </ul>
     @endif
+
+    @if (session('gagal'))
+        <span style="color: red;">{{ session('gagal') }}</span>
+    @endif
+
 
     <form action="{{ route('umur.store') }}" method="post">
         @csrf
