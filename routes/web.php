@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BarangController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Middleware\UmurMiddleware;
 use Illuminate\Http\Request;
@@ -85,5 +86,10 @@ Route::prefix('umur')->group(function(){
 });
 
 Route::get('employee', [EmployeeController::class, 'index']);
+
+// memanggil controller resource
+Route::resource('barang', BarangController::class);
+
+Route::get('report', [BarangController::class, 'report'])->name('report');
 
 
