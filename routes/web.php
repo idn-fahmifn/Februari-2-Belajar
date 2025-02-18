@@ -2,14 +2,16 @@
 
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Middleware\UmurMiddleware;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    // tampilkan file yang ada di folder views -> welcome
     return view('welcome');
 });
+
 
 // Simple route
 Route::get('fahmi', function(){
@@ -93,3 +95,19 @@ Route::resource('barang', BarangController::class);
 Route::get('report', [BarangController::class, 'report'])->name('report');
 
 
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    // route CRUD kategori dan menu.
+    Route::get('kategori', [KategoriController::class, 'index'])->name('kategori.index');
+
+
+});
+
+require __DIR__.'/auth.php';

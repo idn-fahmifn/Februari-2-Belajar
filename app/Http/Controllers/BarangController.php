@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Barang;
 use Illuminate\Http\Request;
 
 class BarangController extends Controller
@@ -11,7 +12,8 @@ class BarangController extends Controller
      */
     public function index()
     {
-        return 'Ini adalah halaman index barang';
+        $data = Barang::paginate(10);
+        return view('barang.index', compact('data'));
     }
 
     /**
@@ -33,9 +35,10 @@ class BarangController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
-        // return 'Ini adalah halaman detail';
+        $detail = Barang::findOrFail($id);
+        return view('barang.detail', compact('detail'));
     }
 
     /**
