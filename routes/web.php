@@ -106,6 +106,8 @@ Route::middleware('auth')->group(function () {
 
     // route CRUD kategori dan menu.
     Route::get('kategori', [KategoriController::class, 'index'])->name('kategori.index');
+    Route::get('kategori/create', [KategoriController::class, 'create'])->name('kategori.create');
+    Route::post('kategori', [KategoriController::class, 'store'])->name('kategori.store');
 
 
 });

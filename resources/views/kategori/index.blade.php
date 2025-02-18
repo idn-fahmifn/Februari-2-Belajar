@@ -23,18 +23,22 @@
                         <thead class="bg-gray-200 dark:bg-red-700">
                             <tr>
                                 <th scope="col" class="py-3 px-6 text-left text-xs font-medium text-gray-700 dark:text-white uppercase tracking-wider">
-                                    Menu Name
+                                    Nama Menu
                                 </th>
                                 <th scope="col" class="py-3 px-6 text-left text-xs font-medium text-gray-700 dark:text-white uppercase tracking-wider">
                                     Category
                                 </th>
-                                <th scope="col" class="py-3 px-6 text-left text-xs font-medium text-gray-700 dark:text-white uppercase tracking-wider">
-                                    Action
-                                </th>
                             </tr>
                         </thead>
                         <tbody class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
-
+                            @foreach ($data as $item)
+                            <tr>
+                                <td class="dark:text-white p-2"><a href="#" class="text-md font-semibold">{{ $item->nama_kategori }}</a> </td>
+                                <td class="dark:text-white p-2">
+                                    <img src="{{ asset('storage/images/kategori/' .$item->thumbnail) }}" width="60" alt="Gambar Kategori">
+                                </td>
+                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

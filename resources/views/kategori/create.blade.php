@@ -16,14 +16,19 @@
                     </div>
                 </div>
 
-                <form method="post" action="#" class="mt-6 space-y-6">
+                <form method="post" action="{{ route('kategori.store') }}" class="mt-6 space-y-6" enctype="multipart/form-data">
                     @csrf
                     <div>
-                        <x-input-label for="name" :value="__('Name')" />
-                        <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" />
-                        <x-input-error class="mt-2" :messages="$errors->get('name')" />
+                        <x-input-label for="nama_kategori" :value="__('Nama_kategori Kategori')" />
+                        <x-text-input id="nama_kategori" name="nama_kategori" type="text" class="mt-1 block w-full" required />
+                        <x-input-error class="mt-2" :messages="$errors->get('nama_kategori')" />
                     </div>
-
+                    <div>
+                        <x-input-label for="thumbnail" :value="__('Thumbnail')" />
+                        <x-text-input id="thumbnail" name="thumbnail" type="file" class="mt-1 block w-full" required autofocus />
+                        <x-input-error class="mt-2" :messages="$errors->get('thumbnail')" />
+                    </div>
+                    <button type="submit" class="bg-red-700 hover:bg-red-500 text-white px-6 py-2 rounded-md">Tambah</button>
                 </form>
 
             </div>
