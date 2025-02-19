@@ -19,14 +19,24 @@
                 <form method="post" action="{{ route('kategori.store') }}" class="mt-6 space-y-6" enctype="multipart/form-data">
                     @csrf
                     <div>
-                        <x-input-label for="nama_kategori" :value="__('Nama_kategori Kategori')" />
-                        <x-text-input id="nama_kategori" name="nama_kategori" type="text" class="mt-1 block w-full" required />
-                        <x-input-error class="mt-2" :messages="$errors->get('nama_kategori')" />
+                        <x-input-label for="nama" :value="__('Nama Menu')" />
+                        <x-text-input id="nama" name="nama" type="text" class="mt-1 block w-full" required />
+                        <x-input-error class="mt-2" :messages="$errors->get('nama')" />
                     </div>
                     <div>
                         <x-input-label for="thumbnail" :value="__('Thumbnail')" />
                         <x-text-input id="thumbnail" name="thumbnail" type="file" class="mt-1 block w-full" required autofocus />
                         <x-input-error class="mt-2" :messages="$errors->get('thumbnail')" />
+                    </div>
+                    <div>
+                        <x-input-label for="harga" :value="__('Harga')" />
+                        <x-text-input id="harga" name="harga" type="text" class="mt-1 block w-full" required />
+                        <x-input-error class="mt-2" :messages="$errors->get('harga')" />
+                    </div>
+                    <div>
+                        <x-input-label for="nama" :value="__('Deskripsi')" />
+                        <textarea name="deskripsi" class="mt-1 block w-full bg-transparent rounded-md"></textarea>
+                        <x-input-error class="mt-2" :messages="$errors->get('nama')" />
                     </div>
                     <button type="submit" class="bg-red-700 hover:bg-red-500 text-white px-6 py-2 rounded-md">Tambah</button>
                 </form>

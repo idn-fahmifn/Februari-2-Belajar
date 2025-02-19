@@ -19,9 +19,9 @@
                 <form method="post" action="{{ route('kategori.store') }}" class="mt-6 space-y-6" enctype="multipart/form-data">
                     @csrf
                     <div>
-                        <x-input-label for="nama_kategori" :value="__('Nama_kategori Kategori')" />
-                        <x-text-input id="nama_kategori" name="nama_kategori" type="text" class="mt-1 block w-full" required />
-                        <x-input-error class="mt-2" :messages="$errors->get('nama_kategori')" />
+                        <x-input-label for="nama" :value="__('Nama Kategori')" />
+                        <x-text-input id="nama" name="nama" type="text" class="mt-1 block w-full" required />
+                        <x-input-error class="mt-2" :messages="$errors->get('nama')" />
                     </div>
                     <div>
                         <x-input-label for="thumbnail" :value="__('Thumbnail')" />

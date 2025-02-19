@@ -12,4 +12,10 @@ class MenuController extends Controller
         $data = Menu::paginate(10);
         return view('menu.index', compact('data'));
     }
+
+    public function create()
+    {
+        return view('menu.create');
+    }
+
 }
