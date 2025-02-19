@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kategori;
 use App\Models\Menu;
 use Illuminate\Http\Request;
 
@@ -15,7 +16,8 @@ class MenuController extends Controller
 
     public function create()
     {
-        return view('menu.create');
+        $kategori = Kategori::all();
+        return view('menu.create', compact('kategori'));
     }
 
 }

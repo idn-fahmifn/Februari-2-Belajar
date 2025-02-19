@@ -24,19 +24,29 @@
                         <x-input-error class="mt-2" :messages="$errors->get('nama')" />
                     </div>
                     <div>
+                        <x-input-label for="kategori" :value="__('Kategori')" />
+                        <select name="id_kategori" class="mt-1 block w-full bg-transparent rounded-md dark:text-white" required>
+                            <option value="">Pilih Kategori</option>
+                            @foreach ($kategori as $item)
+                            <option value="{{ $item->id }}">{{ $item->nama_kategori }}</option>                            
+                            @endforeach
+                        </select>
+                        <x-input-error class="mt-2" :messages="$errors->get('nama')" />
+                    </div>
+                    <div>
                         <x-input-label for="thumbnail" :value="__('Thumbnail')" />
                         <x-text-input id="thumbnail" name="thumbnail" type="file" class="mt-1 block w-full" required autofocus />
                         <x-input-error class="mt-2" :messages="$errors->get('thumbnail')" />
                     </div>
                     <div>
                         <x-input-label for="harga" :value="__('Harga')" />
-                        <x-text-input id="harga" name="harga" type="text" class="mt-1 block w-full" required />
+                        <x-text-input id="harga" name="harga" type="number" class="mt-1 block w-full" required />
                         <x-input-error class="mt-2" :messages="$errors->get('harga')" />
                     </div>
                     <div>
-                        <x-input-label for="nama" :value="__('Deskripsi')" />
-                        <textarea name="deskripsi" class="mt-1 block w-full bg-transparent rounded-md"></textarea>
-                        <x-input-error class="mt-2" :messages="$errors->get('nama')" />
+                        <x-input-label for="deskripsi" :value="__('Deskripsi')" />
+                        <textarea name="deskripsi" class="mt-1 block w-full bg-transparent rounded-md dark:text-white"></textarea>
+                        <x-input-error class="mt-2" :messages="$errors->get('deksripsi')" />
                     </div>
                     <button type="submit" class="bg-red-700 hover:bg-red-500 text-white px-6 py-2 rounded-md">Tambah</button>
                 </form>
