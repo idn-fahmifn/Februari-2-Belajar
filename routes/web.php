@@ -3,6 +3,7 @@
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\MenuController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Middleware\UmurMiddleware;
 use Illuminate\Http\Request;
@@ -105,9 +106,17 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     // route CRUD kategori dan menu.
+    // route kategori
     Route::get('kategori', [KategoriController::class, 'index'])->name('kategori.index');
     Route::get('kategori/create', [KategoriController::class, 'create'])->name('kategori.create');
     Route::post('kategori', [KategoriController::class, 'store'])->name('kategori.store');
+    Route::get('kategori/{param}', [KategoriController::class, 'detail'])->name('kategori.detail');
+    Route::put('kategori/{param}', [KategoriController::class, 'update'])->name('kategori.update');
+    Route::delete('kategori/{param}', [KategoriController::class, 'delete'])->name('kategori.delete');
+
+    // route untuk menu
+    Route::get('menu', [MenuController::class, 'index'])->name('menu.index');
+    Route::get('menu/create', [MenuController::class, 'create'])->name('menu.create');
 
 
 });

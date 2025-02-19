@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Kategori Menu') }}
+            {{ __('Menu') }}
         </h2>
     </x-slot>
 
@@ -11,11 +11,11 @@
                 <!-- area judul dan button kiri kanan -->
                 <div class="flex justify-between items-center mb-6">
                     <div>
-                        <h5 class="text-lg font-semibold dark:text-white">Kategori</h5>
-                        <span class="font-md text-sm dark:text-white">Kategori Menu</span>
+                        <h5 class="text-lg font-semibold dark:text-white">Daftar Menu</h5>
+                        <span class="font-md text-sm dark:text-white">Klik pada nama menu untuk melihat detail.</span>
                     </div>
                     <div>
-                        <a href="{{ route('kategori.create') }}" class="bg-red-700 px-6 py-2 text-white hover:bg-red-500 rounded-md">Tambah Kategori</a>
+                        <a href="{{ route('menu.create') }}" class="bg-red-700 px-6 py-2 text-white hover:bg-red-500 rounded-md">Tambah Menu</a>
                     </div>
                 </div>
                 <div class="overflow-x-auto">
@@ -27,6 +27,9 @@
                                 </th>
                                 <th scope="col" class="py-3 px-6 text-xs font-medium text-gray-700 text-start dark:text-white uppercase tracking-wider">
                                     Thumbnail
+                                </th>
+                                <th scope="col" class="py-3 px-6 text-xs font-medium text-gray-700 text-start dark:text-white uppercase tracking-wider">
+                                    Kategori
                                 </th>
                             </tr>
                         </thead>
