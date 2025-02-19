@@ -16,7 +16,11 @@
                         <span class="font-md text-sm dark:text-white">Data semua menu yang ada di kategori <b>{{ $data->nama_kategori }}</b></span>
                     </div>
                 </div>
-
+                @if (!$menu)
+                <span class="bg-red-400 text-white">
+                    Data belum ada
+                </span>
+                @else
                 <table class="min-w-full bg-white dark:bg-gray-800 rounded-lg">
                     <thead class="bg-gray-200 dark:bg-red-700">
                         <tr>
@@ -29,8 +33,6 @@
                             <th scope="col" class="py-3 px-6 text-xs font-medium text-gray-700 text-start dark:text-white uppercase tracking-wider">
                                 Harga
                             </th>
-                            
-                           
                         </tr>
                     </thead>
                     <tbody class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
@@ -45,6 +47,8 @@
                         @endforeach
                     </tbody>
                 </table>
+                @endif
+
             </div>
         </div>
 
