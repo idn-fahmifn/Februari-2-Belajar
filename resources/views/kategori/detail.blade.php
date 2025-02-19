@@ -17,7 +17,7 @@
                     </div>
                 </div>
                 @if (!$menu)
-                <span class="bg-red-400 text-white">
+                <span class="w-full py-3 px-12 bg-red-400 text-white">
                     Data belum ada
                 </span>
                 @else
