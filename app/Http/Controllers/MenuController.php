@@ -47,7 +47,8 @@ class MenuController extends Controller
     public function detail($id)
     {
         $data = Menu::findOrFail($id);
-        return view('menu.detail', compact('data'));
+        $kategori = Kategori::all();
+        return view('menu.detail', compact('data','kategori'));
     }
 
 }

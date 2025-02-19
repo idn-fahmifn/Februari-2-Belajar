@@ -36,7 +36,7 @@
                         <x-input-error class="mt-2" :messages="$errors->get('id_kategori')" />
                     </div>
                     <div>
-                        <img src="{{ asset('storage/images/menu/'.$data->thumbnail) }}" alt="">
+                        <img src="{{ asset('storage/images/menu/'.$data->thumbnail) }}" width="80" alt="Gambar Menu">
                         <x-input-label for="thumbnail" :value="__('Thumbnail')" />
                         <x-text-input id="thumbnail" name="thumbnail" type="file" class="mt-1 block w-full" value="{{ $data->thumbnail }}" autofocus />
                         <x-input-error class="mt-2" :messages="$errors->get('thumbnail')" />
