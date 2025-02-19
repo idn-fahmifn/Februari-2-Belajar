@@ -16,15 +16,35 @@
                         <span class="font-md text-sm dark:text-white">Data semua menu yang ada di kategori <b>{{ $data->nama_kategori }}</b></span>
                     </div>
                 </div>
-                @foreach ($menu as $item)
 
-                @if (!$item)
-                    <span class="text-white">Data belum ada pada kategori ini</span>
-                @else
-                    {{ $item }}
-                @endif
-                @endforeach
-
+                <table class="min-w-full bg-white dark:bg-gray-800 rounded-lg">
+                    <thead class="bg-gray-200 dark:bg-red-700">
+                        <tr>
+                            <th scope="col" class="py-3 px-6 text-left text-xs font-medium text-gray-700 dark:text-white uppercase tracking-wider">
+                                Nama Menu
+                            </th>
+                            <th scope="col" class="py-3 px-6 text-xs font-medium text-gray-700 text-start dark:text-white uppercase tracking-wider">
+                                Thumbnail
+                            </th>
+                            <th scope="col" class="py-3 px-6 text-xs font-medium text-gray-700 text-start dark:text-white uppercase tracking-wider">
+                                Harga
+                            </th>
+                            
+                           
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
+                        @foreach ($menu as $item)
+                        <tr>
+                            <td class="dark:text-white px-6"><a href="{{ route('menu.detail', $item->id) }}" class="text-md font-semibold">{{ $item->nama }}</a> </td>
+                            <td class="dark:text-white px-6 py-2">
+                                <img src="{{ asset('storage/images/menu/' .$item->thumbnail) }}" width="60" alt="Gambar Kategori">
+                            </td>
+                            <td class="dark:text-white px-6">IDR. {{ $item->harga }}</td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
 

@@ -36,7 +36,7 @@
                         <tbody class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
                             @foreach ($data as $item)
                             <tr>
-                                <td class="dark:text-white px-6"><a href="{{ route('kategori.detail', $item->id) }}" class="text-md font-semibold">{{ $item->nama }}</a> </td>
+                                <td class="dark:text-white px-6"><a href="{{ route('menu.detail', $item->id) }}" class="text-md font-semibold">{{ $item->nama }}</a> </td>
                                 <td class="dark:text-white px-6 py-2">
                                     <img src="{{ asset('storage/images/menu/' .$item->thumbnail) }}" width="60" alt="Gambar Kategori">
                                 </td>

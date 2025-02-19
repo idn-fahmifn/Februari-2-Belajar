@@ -6,18 +6,45 @@
     </x-slot>
 
     <div class="py-12">
+        <!-- card detail -->
+         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mb-6">
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6">
+                <table class="table w-full">
+                    <tr>
+                        <th class="text-white text-start">Nama Menu</th>
+                        <td class="text-white text-start">{{ $data->nama }}</td>
+                        <td rowspan="3" class="text-center">
+                            <img src="{{ asset('storage/images/menu/'.$data->thumbnail) }}" width="100" alt="Gambar Menu">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="text-white text-start">Kategori</th>
+                        <td class="text-white text-start">{{ $data->kategori->nama_kategori }}</td>
+                    </tr>
+                    <tr>
+                        <th class="text-white text-start">Harga</th>
+                        <td class="text-white text-start">IDR. {{ $data->harga }}</td>
+                    </tr>
+                    <tr>
+                        <th class="text-white text-start">Deskripsi Menu</th>
+                        <td class="text-white text-start">{{ $data->deskripsi }}</td>
+                    </tr>
+                </table>
+            </div>
+         </div>
+
         <!-- edit data -->
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6">
                 <!-- area judul dan button kiri kanan -->
                 <div class="flex justify-between items-center mb-6">
                     <div>
-                        <h5 class="text-lg font-semibold dark:text-white">{{ $data->nama_kategori }}</h5>
+                        <h5 class="text-lg font-semibold dark:text-white">{{ $data->nama }}</h5>
                         <span class="font-md text-sm dark:text-white">Masukan data dibawah jika ingin ada perubahan.</span>
                     </div>
                 </div>
 
-                <form method="post" action="{{ route('menu.store') }}" class="mt-6 space-y-6" enctype="multipart/form-data">
+                <form method="post" action="{{ route('menu.update', $data->id) }}" class="mt-6 space-y-6" enctype="multipart/form-data">
                     @csrf
                     @method('put')
                     <div>
@@ -57,10 +84,10 @@
                 </form>
 
                 <div class="mt-6 text-end">
-                    <form action="{{ route('kategori.delete', $data->id) }}" method="post">
+                    <form action="{{ route('menu.delete', $data->id) }}" method="post">
                         @csrf
                         @method('delete')
-                        <a href="{{ route('kategori.index') }}" class="border border-red-700 py-2 px-6 dark:text-white rounded-md">Kembali</a>
+                        <a href="{{ route('menu.index') }}" class="border border-red-700 py-2 px-6 dark:text-white rounded-md">Kembali</a>
                         <button type="submit" class="bg-red-700 hover:bg-red-500 text-white px-6 py-2 rounded-md" onclick="return confirm('Yakin nii mau dihapus?')">Hapus</button>
                     </form>
                 </div>

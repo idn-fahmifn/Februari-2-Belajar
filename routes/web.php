@@ -119,6 +119,10 @@ Route::middleware('auth')->group(function () {
     Route::get('menu/create', [MenuController::class, 'create'])->name('menu.create');
     Route::post('menu', [MenuController::class, 'store'])->name('menu.store');
     Route::get('menu/{param}', [MenuController::class, 'detail'])->name('menu.detail');
+    Route::put('menu/{param}', [MenuController::class, 'update'])->name('menu.update');
+    Route::delete('menu/{param}', [MenuController::class, 'delete'])->name('menu.delete');
+
+
 
 
 
