@@ -6,29 +6,6 @@
     </x-slot>
 
     <div class="py-12">
-        <!-- list data menu yang sesuai dengan id yang dipilih -->
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mb-6">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6">
-                <!-- area judul dan button kiri kanan -->
-                <div class="flex justify-between items-center mb-6">
-                    <div>
-                        <h5 class="text-lg font-semibold dark:text-white">Data Menu</h5>
-                        <span class="font-md text-sm dark:text-white">Data semua menu yang ada di kategori <b>{{ $data->nama_kategori }}</b></span>
-                    </div>
-                </div>
-                @foreach ($menu as $item)
-
-                @if (!$item)
-                    <span class="text-white">Data belum ada pada kategori ini</span>
-                @else
-                    {{ $item }}
-                @endif
-                @endforeach
-
-            </div>
-        </div>
-
-
         <!-- edit data -->
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6">
@@ -40,21 +17,43 @@
                     </div>
                 </div>
 
-                <form method="post" action="{{ route('kategori.update', $data->id) }}" class="mt-6 space-y-6" enctype="multipart/form-data">
+                <form method="post" action="{{ route('menu.store') }}" class="mt-6 space-y-6" enctype="multipart/form-data">
                     @csrf
                     @method('put')
                     <div>
-                        <x-input-label for="nama_kategori" :value="__('Nama kategori')" />
-                        <x-text-input id="nama_kategori" name="nama_kategori" type="text" class="mt-1 block w-full" value="{{ $data->nama_kategori }}" required />
-                        <x-input-error class="mt-2" :messages="$errors->get('nama_kategori')" />
+                        <x-input-label for="nama" :value="__('Nama Menu')" />
+                        <x-text-input id="nama" name="nama" value="{{ $data->nama }}" type="text" class="mt-1 block w-full" required />
+                        <x-input-error class="mt-2" :messages="$errors->get('nama')" />
                     </div>
                     <div>
+                        <x-input-label for="kategori" :value="__('Kategori')" />
+                        <select name="id_kategori" class="mt-1 block w-full bg-transparent rounded-md dark:text-white" required>
+                            <option value="{{ $data->kategori->id }}">{{ $data->kategori->nama_kategori }}</option>
+                            @foreach ($kategori as $item)
+                            <option value="{{ $item->id }}">{{ $item->nama_kategori }}</option>
+                            @endforeach
+                        </select>
+                        <x-input-error class="mt-2" :messages="$errors->get('id_kategori')" />
+                    </div>
+                    <div>
+                        <img src="{{ asset('storage/images/menu/'.$data->thumbnail) }}" alt="">
                         <x-input-label for="thumbnail" :value="__('Thumbnail')" />
-                        <img src="{{ asset('storage/images/kategori/'.$data->thumbnail) }}" width="60" alt="Thumbnail" class="mt-6 mb-3">
-                        <x-text-input id="thumbnail" name="thumbnail" type="file" class="mt-1 block w-full" value="{{ $data->thumbnail }}" required autofocus />
+                        <x-text-input id="thumbnail" name="thumbnail" type="file" class="mt-1 block w-full" value="{{ $data->thumbnail }}" autofocus />
                         <x-input-error class="mt-2" :messages="$errors->get('thumbnail')" />
                     </div>
-                    <button type="submit" class="bg-red-700 hover:bg-red-500 text-white px-6 py-2 rounded-md">Edit</button>
+                    <div>
+                        <x-input-label for="harga" :value="__('Harga')" />
+                        <x-text-input id="harga" name="harga" type="number" value="{{ $data->harga }}" class="mt-1 block w-full" required />
+                        <x-input-error class="mt-2" :messages="$errors->get('harga')" />
+                    </div>
+                    <div>
+                        <x-input-label for="deskripsi" :value="__('Deskripsi')" />
+                        <textarea name="deskripsi" class="mt-1 block w-full bg-transparent rounded-md dark:text-white">
+                            {{ $data->deskripsi }}
+                        </textarea>
+                        <x-input-error class="mt-2" :messages="$errors->get('deksripsi')" />
+                    </div>
+                    <button type="submit" class="bg-red-700 hover:bg-red-500 text-white px-6 py-2 rounded-md">Tambah</button>
                 </form>
 
                 <div class="mt-6 text-end">

@@ -117,6 +117,10 @@ Route::middleware('auth')->group(function () {
     // route untuk menu
     Route::get('menu', [MenuController::class, 'index'])->name('menu.index');
     Route::get('menu/create', [MenuController::class, 'create'])->name('menu.create');
+    Route::post('menu', [MenuController::class, 'store'])->name('menu.store');
+    Route::get('menu/{param}', [MenuController::class, 'detail'])->name('menu.detail');
+
+
 
 
 });
